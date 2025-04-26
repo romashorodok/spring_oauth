@@ -1,6 +1,6 @@
 services:
   keycloak:
-    image: keycloak/keycloak:26.2
+    image: keycloak/keycloak:24.0
     ports:
       - 9090:8080
     environment:
