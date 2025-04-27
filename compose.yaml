@@ -1,17 +1,19 @@
+---
 services:
   keycloak:
+    # For the v26 https://github.com/keycloak/keycloak/issues/33800#issuecomment-2452048629
     image: keycloak/keycloak:24.0
     ports:
       - 9090:8080
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - ./keycloak/realm.json:/opt/keycloak/data/import/realm.json
     command:
       - "start-dev"
+      - "--import-realm"
   mongodb:
     image: mongo:8.0.8-noble
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
     ports:
       - 27017:27017

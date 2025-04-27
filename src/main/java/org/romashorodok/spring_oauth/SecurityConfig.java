@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -25,7 +24,7 @@ public class SecurityConfig {
         http
                 .oauth2ResourceServer(auth ->
                         auth.jwt(jwt ->
-                                jwt.jwtAuthenticationConverter(new JwtAuthenticationConverter()))
+                                jwt.jwtAuthenticationConverter(new KeycloakJwtAuthenticationConverter()))
                 );
 
         http
@@ -36,5 +35,4 @@ public class SecurityConfig {
 
         return http.build();
     }
-
 }
