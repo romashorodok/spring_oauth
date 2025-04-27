@@ -8,3 +8,10 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin
     command:
       - "start-dev"
+  mongodb:
+    image: mongo:8.0.8-noble
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - 27017:27017
